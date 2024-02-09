@@ -288,4 +288,59 @@ var ParticlePool = (function() {
  </BODY>
 </HTML>
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            background-color: black; /*设置背景颜色为黑色*/
+        }
+        
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 50px;
+            border-radius: 50%;
+            animation: fireworkAnimation 2s linear infinite;
+        }
+        
+        @keyframes fireworkAnimation {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0.3;
+                transform: translateY(-400px) scaleX(0.7);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function createFireworks() {
+            var numOfFireworks = 10; // 定义要创建的烟花数量
+            for (var i = 0; i < numOfFireworks; i++) {
+                var fireworkElement = document.createElement("div");
+                fireworkElement.className = "firework";
+                
+                var randomLeftPosition = Math.random() * window.innerWidth - 50 + 'px'; // 生成随机左边位置
+                var randomTopPosition = Math.random() * window.innerHeight - 200 + 'px'; // 生成随机上边位置
+                
+                fireworkElement.style.left = randomLeftPosition;
+                fireworkElement.style.top = randomTopPosition;
+                
+                document.body.appendChild(fireworkElement);
+            }
+        }
+        
+        setInterval(createFireworks, 1000); //每隔1秒调用一次函数来创建新的烟花
+    </script>
+</body>
+</html>
+
+
+
 
